@@ -18,7 +18,7 @@ with open(bissell, "r", encoding="utf-8") as f:
     
 def fetch_and_save_first_image(query: str):
     url = "https://www.google.com/search"
-    params = {"q": query, "tbm": "isch", "tbs"="isz:lt,islt:xga"}
+    params = {"q": query, "tbm": "isch", "tbs":"isz:lt,islt:4mp"}
     headers = {"User-Agent": "Mozilla/5.0"}
     resp = requests.get(url, headers=headers, params=params)
     resp.raise_for_status()
