@@ -5,5 +5,7 @@ toml==0.10.2
 os
 requests
 bs4
+beautifulsoup4
+
 
 
