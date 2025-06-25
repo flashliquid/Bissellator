@@ -52,7 +52,7 @@ if st.button('Click to Bissellate'):
     #print(completion.choices[0].message)
     st.write("Bissellwords:")
     st.markdown(completion.choices[0].message.content)
-    img_url=fetch_and_save_first_image(lost_object + " filthy and gross in a bush")
+    img_url=fetch_and_save_first_image(lost_object + " disgusting")
     st.image(img_url,width=200)
 else:
     st.write("Don't be scared.")
