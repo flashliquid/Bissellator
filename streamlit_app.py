@@ -14,6 +14,28 @@ bissell= str(Path(__file__).parent/"bissell2009_extracted.txt")
 lost_object=st.text_input("Specify a lost item","a shitty old sock")
 with open(bissell, "r", encoding="utf-8") as f:
     bissell_text = f.read()
+    
+    
+def fetch_and_save_first_image(query: str):
+    url = "https://www.google.com/search"
+    params = {"q": query, "tbm": "isch"}
+    headers = {"User-Agent": "Mozilla/5.0"}
+    resp = requests.get(url, headers=headers, params=params)
+    resp.raise_for_status()
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+    # Skip the first <img> (logo), grab the next real one
+    img_tags = soup.find_all("img")
+    for img in img_tags:
+        src = img.get("src")
+        if src and src.startswith("http") or (src.startswith("https")):
+            img_url = src
+            #st.write(img_url)
+            return img_url
+            break
+    else:
+        raise RuntimeError("No valid image found")
+
 
 # Button to start generating text
 if st.button('Click to Bissellate'):
@@ -36,27 +58,9 @@ else:
     st.write("Don't be scared.")
 
 
-def fetch_and_save_first_image(query: str):
-    url = "https://www.google.com/search"
-    params = {"q": query, "tbm": "isch"}
-    headers = {"User-Agent": "Mozilla/5.0"}
-    resp = requests.get(url, headers=headers, params=params)
-    resp.raise_for_status()
 
-    soup = BeautifulSoup(resp.text, "html.parser")
-    # Skip the first <img> (logo), grab the next real one
-    img_tags = soup.find_all("img")
-    for img in img_tags:
-        src = img.get("src")
-        if src and src.startswith("http") or (src.startswith("https")):
-            img_url = src
-            #st.write(img_url)
-            return img_url
-            break
-    else:
-        raise RuntimeError("No valid image found")
 
-    img_data = requests.get(img_url).content
+    
     
 
 
