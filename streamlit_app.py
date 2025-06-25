@@ -34,3 +34,35 @@ if st.button('Click to Bissellate'):
     st.markdown(completion.choices[0].message.content)
 else:
     st.write("Don't be scared.")
+import os
+import requests
+from bs4 import BeautifulSoup
+
+def fetch_and_save_first_image(query: str, outfile: str):
+    url = "https://www.google.com/search"
+    params = {"q": query, "tbm": "isch"}
+    headers = {"User-Agent": "Mozilla/5.0"}
+    resp = requests.get(url, headers=headers, params=params)
+    resp.raise_for_status()
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+    # Skip the first <img> (logo), grab the next real one
+    img_tags = soup.find_all("img")
+    for img in img_tags:
+        src = img.get("src")
+        if src and src.startswith("http"):
+            img_url = src
+            break
+    else:
+        raise RuntimeError("No valid image found")
+
+    img_data = requests.get(img_url).content
+    os.makedirs(os.path.dirname(outfile) or ".", exist_ok=True)
+    with open(outfile, "wb") as f:
+        f.write(img_data)
+    print(f"Saved first image to {outfile}")
+
+
+ fetch_and_save_first_image(lost_object, "first_image.jpg")
+ st.image("first_image.jpg")
+    
