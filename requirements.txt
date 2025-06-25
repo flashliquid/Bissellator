@@ -4,5 +4,6 @@ streamlit==1.45.1
 toml==0.10.2
 os
 requests
-beautifulsoup4
+bs4
+
 
