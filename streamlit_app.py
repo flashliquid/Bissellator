@@ -59,5 +59,6 @@ def fetch_and_save_first_image(query: str):
 
 fetch_and_save_first_image(lost_object)
 st.image(img_url)
+st.image(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwaKTJLEklW9RA8s8I5WyoB4AyQu5TpTd249uQ2Luoh3Czam_96-wPXmHh8Q&s)
 st.write("")
     
