@@ -53,7 +53,7 @@ if st.button('Click to Bissellate'):
     st.write("Bissellwords:")
     st.markdown(completion.choices[0].message.content)
     img_url=fetch_and_save_first_image(lost_object)
-    st.image(img_url)
+    st.image(img_url,width=800)
 else:
     st.write("Don't be scared.")
 
