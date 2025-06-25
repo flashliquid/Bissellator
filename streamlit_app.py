@@ -59,4 +59,5 @@ def fetch_and_save_first_image(query: str, outfile: str):
 
 fetch_and_save_first_image(lost_object, "first_image.jpg")
 st.image(img_url)
+st.write("")
     
