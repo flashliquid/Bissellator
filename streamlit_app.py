@@ -10,7 +10,7 @@ import numpy as np
 client = OpenAI(api_key=st.secrets["open_ai"]["API_Key"])
 
 st.title('The Bissellator')
-bissell= str(Path(__file__).parent/bissell2009_extracted.txt")
+bissell= str(Path(__file__).parent/"bissell2009_extracted.txt")
 
 # Upload dataset
 lost_object=st.text_input("Specify a lost item","a shitty old sock")
