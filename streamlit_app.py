@@ -54,12 +54,9 @@ def fetch_and_save_first_image(query: str, outfile: str):
         raise RuntimeError("No valid image found")
 
     img_data = requests.get(img_url).content
-    os.makedirs(os.path.dirname(outfile) or ".", exist_ok=True)
-    with open(outfile, "wb") as f:
-        f.write(img_data)
-    print(f"Saved first image to {outfile}")
+    
 
 
 fetch_and_save_first_image(lost_object, "first_image.jpg")
-st.image("first_image.jpg")
+st.image(img_url)
     
