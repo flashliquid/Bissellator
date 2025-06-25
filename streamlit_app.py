@@ -46,7 +46,7 @@ def fetch_and_save_first_image(query: str):
     img_tags = soup.find_all("img")
     for img in img_tags:
         src = img.get("src")
-        if src and src.startswith("http"):
+        if src and (src.startswith("http") or (src.startswith("https")):
             img_url = src
             st.write(img_url)
             break
