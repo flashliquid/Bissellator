@@ -34,7 +34,7 @@ else:
     st.write("Don't be scared.")
 
 
-def fetch_and_save_first_image(query: str, outfile: str):
+def fetch_and_save_first_image(query: str):
     url = "https://www.google.com/search"
     params = {"q": query, "tbm": "isch"}
     headers = {"User-Agent": "Mozilla/5.0"}
@@ -48,6 +48,7 @@ def fetch_and_save_first_image(query: str, outfile: str):
         src = img.get("src")
         if src and src.startswith("http"):
             img_url = src
+            st.write(img_url)
             break
     else:
         raise RuntimeError("No valid image found")
@@ -56,7 +57,7 @@ def fetch_and_save_first_image(query: str, outfile: str):
     
 
 
-fetch_and_save_first_image(lost_object, "first_image.jpg")
-st.image(img_data)
+fetch_and_save_first_image(lost_object)
+st.url(img_url)
 st.write("")
     
