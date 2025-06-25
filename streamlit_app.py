@@ -49,6 +49,7 @@ def fetch_and_save_first_image(query: str):
         if src and src.startswith("http") or (src.startswith("https")):
             img_url = src
             st.write(img_url)
+            return img_url
             break
     else:
         raise RuntimeError("No valid image found")
