@@ -18,7 +18,7 @@ with open(bissell, "r", encoding="utf-8") as f:
     
 def fetch_and_save_first_image(query: str):
     url = "https://www.google.com/search"
-    params = {"q": query, "tbm": "isch", "tbs":"isz:lt,islt:8mp"}
+    params = {"q": query, "tbm": "isch", "tbs":"isz:lt,islt:8mp,sur:cl,itp:photo"}
     headers = {"User-Agent": "Mozilla/5.0"}
     resp = requests.get(url, headers=headers, params=params)
     resp.raise_for_status()
@@ -53,7 +53,7 @@ if st.button('Click to Bissellate'):
     st.write("Bissellwords:")
     st.markdown(completion.choices[0].message.content)
     img_url=fetch_and_save_first_image(lost_object)
-    st.image(img_url,width=400)
+    st.image(img_url,width=200)
 else:
     st.write("Don't be scared.")
 
