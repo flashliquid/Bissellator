@@ -1,7 +1,6 @@
 import streamlit as st
 from openai import OpenAI
 from pathlib import Path
-import os
 import requests
 from bs4 import BeautifulSoup
 

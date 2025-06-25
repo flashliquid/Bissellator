@@ -2,6 +2,5 @@ numpy
 openai==1.78.1
 streamlit==1.45.1
 toml==0.10.2
-os
 requests
 bs4
