@@ -1,10 +1,9 @@
 import streamlit as st
-import pandas as pd
-
 from openai import OpenAI
 from pathlib import Path
-from datetime import datetime
-import numpy as np
+import os
+import requests
+from bs4 import BeautifulSoup
 
 # Initialize OpenAI client with API key from secrets
 client = OpenAI(api_key=st.secrets["open_ai"]["API_Key"])
@@ -34,9 +33,7 @@ if st.button('Click to Bissellate'):
     st.markdown(completion.choices[0].message.content)
 else:
     st.write("Don't be scared.")
-import os
-import requests
-from bs4 import BeautifulSoup
+
 
 def fetch_and_save_first_image(query: str, outfile: str):
     url = "https://www.google.com/search"
