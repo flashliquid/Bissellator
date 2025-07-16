@@ -11,7 +11,7 @@ st.title('The Bissellator')
 bissell= str(Path(__file__).parent/"bissell2009_extracted.txt")
 
 # Upload dataset
-lost_object=st.text_input("Specify a lost item","a shitty old sock")
+lost_object=st.text_input("Specify a lost item","An old sock")
 with open(bissell, "r", encoding="utf-8") as f:
     bissell_text = f.read()
     
